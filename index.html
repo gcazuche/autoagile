@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Agile - Sistema de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Adicionando as fontes e ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1>AUTO.<span class="highlight">AGILE</span></h1>
+                <p>Sistema de Gestão</p>
+            </div>
+            
+            <nav>
+                <p class="menu-title">MENU</p>
+                <ul class="menu">
+                    <li>
+                        <button id="dashboard-tab" class="tab-button active">
+                            <span class="icon"><i class="fas fa-chart-line"></i></span>
+                            Dashboard
+                        </button>
+                    </li>
+                    <li>
+                        <button id="estoque-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-box"></i></span>
+                            Estoque
+                        </button>
+                    </li>
+                    <li>
+                        <button id="agendamentos-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-calendar"></i></span>
+                            Agendamentos
+                        </button>
+                    </li>
+                    <li>
+                        <button id="clientes-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-users"></i></span>
+                            Clientes
+                        </button>
+                    </li>
+                    <li>
+                        <button id="vendas-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                            Vendas
+                        </button>
+                    </li>
+                    <li>
+                        <button id="fornecedores-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-truck"></i></span>
+                            Fornecedores
+                        </button>
+                    </li>
+                </ul>
+                
+                <p class="menu-title">CONFIGURAÇÕES</p>
+                <ul class="menu">
+                    <li>
+                        <button id="sair-tab" class="tab-button">
+                            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                            Sair
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header>
+                <h2 id="page-title">Dashboard</h2>
+                <div class="header-right">
+                    <div class="user-info">
+                        <img src="https://placehold.co/40x40/3B82F6/FFF?text=JM" alt="Avatar" class="avatar">
+                        <div>
+                            <p class="user-name">João Marcos</p>
+                            <p class="user-role">CEO</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main>
+                <!-- Dashboard Tab Content -->
+                <div id="dashboard-content" class="tab-content active">
+                    <!-- Estatísticas Rápidas -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-title">Vendas do Mês</p>
+                                <p class="stat-value">R$ 58.450,00</p>
+                                <p class="stat-change positive">+12% em relação a Abril</p>
+                            </div>
+                            <div class="stat-icon sales">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-title">Serviços Realizados</p>
+                                <p class="stat-value">87</p>
+                                <p class="stat-change positive">+5% em relação a Abril</p>
+                            </div>
+                            <div class="stat-icon services">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-title">Novos Clientes</p>
+                                <p class="stat-value">34</p>
+                                <p class="stat-change positive">+8% em relação a Abril</p>
+                            </div>
+                            <div class="stat-icon clients">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <p class="stat-title">Produtos em Alerta</p>
+                                <p class="stat-value">4</p>
+                                <p class="stat-change negative">Estoque abaixo do mínimo</p>
+                            </div>
+                            <div class="stat-icon alerts">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gráficos -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3>Evolução de Vendas</h3>
+                            <div class="chart">
+                                <canvas id="sales-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <h3>Produtos Mais Vendidos</h3>
+                            <div class="chart">
+                                <canvas id="products-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3>Serviços Realizados</h3>
+                            <div class="chart">
+                                <canvas id="services-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-card">
+                            <h3>Produtos com Estoque Baixo</h3>
+                            <div class="table-container">
+                                <table id="low-stock-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produto</th>
+                                            <th>Atual</th>
+                                            <th>Mínimo</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Preenchido via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estoque Tab Content -->
+                <div id="estoque-content" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Controle de Estoque</h3>
+                            <div class="actions">
+                                <button class="action-button add">+ Novo Produto</button>
+                                <button class="action-button report">Gerar Relatório</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="estoque-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Produto</th>
+                                        <th>Categoria</th>
+                                        <th>Quant.</th>
+                                        <th>Preço</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Preenchido via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agendamentos Tab Content -->
+                <div id="agendamentos-content" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Agendamentos</h3>
+                            <div class="actions">
+                                <button class="action-button add">+ Novo Agendamento</button>
+                                <button class="action-button calendar">Calendário</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="agendamentos-table">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Veículo</th>
+                                        <th>Serviço</th>
+                                        <th>Data</th>
+                                        <th>Horário</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Preenchido via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clientes Tab Content -->
+                <div id="clientes-content" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Gerenciamento de Clientes</h3>
+                            <div class="actions">
+                                <button class="action-button add">+ Novo Cliente</button>
+                                <button class="action-button report">Gerar Relatório</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="clientes-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Telefone</th>
+                                        <th>Email</th>
+                                        <th>Última Visita</th>
+                                        <th>Veículos</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Preenchido via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vendas Tab Content -->
+                <div id="vendas-content" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Registro de Vendas</h3>
+                            <div class="actions">
+                                <button class="action-button add">+ Nova Venda</button>
+                                <button class="action-button report">Gerar Relatório</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="vendas-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Data</th>
+                                        <th>Cliente</th>
+                                        <th>Itens</th>
+                                        <th>Valor Total</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Preenchido via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fornecedores Tab Content -->
+                <div id="fornecedores-content" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3>Fornecedores</h3>
+                            <div class="actions">
+                                <button class="action-button add">+ Novo Fornecedor</button>
+                                <button class="action-button report">Gerar Relatório</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table id="fornecedores-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Contato</th>
+                                        <th>Categoria</th>
+                                        <th>Última Compra</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Preenchido via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts para gráficos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
+</html>
