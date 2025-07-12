@@ -7,29 +7,61 @@ const vendas = [
   { nome: 'Mai', valor: 20100 },
 ];
 
+const servicosRealizados = [
+  { nome: 'Revisão', quantidade: 145 },
+  { nome: 'Reparos Motor', quantidade: 87 },
+  { nome: 'Pintura', quantidade: 56 },
+  { nome: 'Suspensão', quantidade: 78 },
+  { nome: 'Ar-Condicionado', quantidade: 43 },
+  { nome: 'Borracharia', quantidade: 91 },
+];
+
 const produtosMaisVendidos = [
-  { nome: 'Elevação Pélvica', valor: 8500 },
-  { nome: 'Elevação Lateral', valor: 10500 },
+  { nome: 'Óleo de Motor', valor: 8500 },
+  { nome: 'Filtro de Ar', valor: 6200 },
+  { nome: 'Pastilhas de Freio', valor: 7800 },
+  { nome: 'Bateria', valor: 9400 },
+  { nome: 'Pneus', valor: 15600 },
 ];
 
 const estoqueAlerta = [
-  { id: 1, produto: 'Elevação Pélvica', quantidade: 5, minimo: 10 },
+  { id: 1, produto: 'Filtro de Óleo', quantidade: 5, minimo: 10 },
+  { id: 2, produto: 'Vela de Ignição', quantidade: 8, minimo: 15 },
+  { id: 3, produto: 'Fluido de Freio', quantidade: 3, minimo: 8 },
+  { id: 4, produto: 'Correia Dentada', quantidade: 4, minimo: 6 },
 ];
 
 // Dados para estoque
 const produtosEstoque = [
-  { id: 1, codigo: 'P001', produto: 'Elevação Pélvica', quantidade: 5, preco: 8500, categoria: 'Maquinas' },
+  { id: 1, codigo: 'P001', produto: 'Óleo de Motor 5W30', quantidade: 45, preco: 39.90, categoria: 'Lubrificantes' },
+  { id: 2, codigo: 'P002', produto: 'Filtro de Ar HB20', quantidade: 32, preco: 29.90, categoria: 'Filtros' },
+  { id: 3, codigo: 'P003', produto: 'Pastilha de Freio Gol G6', quantidade: 28, preco: 89.90, categoria: 'Freios' },
+  { id: 4, codigo: 'P004', produto: 'Bateria 60Ah', quantidade: 15, preco: 349.90, categoria: 'Elétrica' },
+  { id: 5, codigo: 'P005', produto: 'Pneu 185/65 R15', quantidade: 24, preco: 289.90, categoria: 'Pneus' },
+  { id: 6, codigo: 'P006', produto: 'Filtro de Óleo Corolla', quantidade: 18, preco: 24.90, categoria: 'Filtros' },
+  { id: 7, codigo: 'P007', produto: 'Fluido de Freio DOT4', quantidade: 12, preco: 28.90, categoria: 'Lubrificantes' },
+  { id: 8, codigo: 'P008', produto: 'Vela de Ignição', quantidade: 8, preco: 19.90, categoria: 'Ignição' },
+  { id: 9, codigo: 'P009', produto: 'Correia Dentada Uno', quantidade: 4, preco: 79.90, categoria: 'Correias' },
+  { id: 10, codigo: 'P010', produto: 'Amortecedor Dianteiro Palio', quantidade: 10, preco: 189.90, categoria: 'Suspensão' },
 ];
 
+// Dados para agendamentos
+const agendamentos = [
+  { id: 1, cliente: 'Carlos Silva', veiculo: 'Honda Civic 2018', servico: 'Revisão Completa', data: '05/05/2025', hora: '09:00', status: 'Confirmado' },
+  { id: 2, cliente: 'Ana Oliveira', veiculo: 'Fiat Argo 2020', servico: 'Troca de Óleo', data: '05/05/2025', hora: '10:30', status: 'Confirmado' },
+  { id: 3, cliente: 'Roberto Almeida', veiculo: 'VW Golf 2019', servico: 'Alinhamento e Balanceamento', data: '05/05/2025', hora: '14:00', status: 'Aguardando' },
+  { id: 4, cliente: 'Juliana Costa', veiculo: 'Jeep Compass 2021', servico: 'Ar-Condicionado', data: '06/05/2025', hora: '11:00', status: 'Confirmado' },
+  { id: 5, cliente: 'Marcos Pereira', veiculo: 'Toyota Corolla 2022', servico: 'Troca de Pastilhas', data: '06/05/2025', hora: '15:30', status: 'Aguardando' },
+];
 
 // Variáveis de estado
 let activeTab = 'dashboard';
 let searchTerm = '';
 let filteredProdutos = [...produtosEstoque];
 const usuario = {
-  nome: 'Web Fitness',
+  nome: 'João Maciel',
   cargo: 'CEO',
-  avatar: 'https://placehold.co/40x40/3B82F6/FFF?text=WF'
+  avatar: 'https://placehold.co/40x40/3B82F6/FFF?text=JM'
 };
 
 // Funções para manipulação da interface
