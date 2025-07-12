@@ -9,6 +9,7 @@ const vendas = [
 
 const produtosMaisVendidos = [
   { nome: 'Elevação Pélvica', valor: 8500 },
+  { nome: 'Elevação Lateral', valor: 10500 },
 ];
 
 const estoqueAlerta = [
